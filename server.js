@@ -29,6 +29,11 @@ app.get("/products/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
+    if (!product) {
+      return res
+        .status(404)
+        .json({ message: `cannot find any product with ID ${id}` });
+    }
     res.status(200).json(product);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -81,16 +86,21 @@ app.delete("/products/:id", async (req, res) => {
 });
 
 mongoose.set("strictQuery", false);
-mongoose
-  .connect(
-    "mongodb+srv://<my_username>:<my_password>@myapi.snhufzr.mongodb.net/Node-API?retryWrites=true&w=majority&appName=Myapi"
-  )
-  .then(() => {
-    console.log("connected to MongoDB");
-    app.listen(3000, () => {
-      console.log(`Node API app is running on port 3000`);
+
+if (require.main === module) {
+  mongoose
+    .connect(
+      "mongodb+srv://<my_username>:<my_password>@myapi.snhufzr.mongodb.net/Node-API?retryWrites=true&w=majority&appName=Myapi"
+    )
+    .then(() => {
+      console.log("connected to MongoDB");
+      app.listen(3000, () => {
+        console.log(`Node API app is running on port 3000`);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+}
+
+module.exports = app;

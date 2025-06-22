@@ -4,6 +4,8 @@
 
 This project is a Node.js RESTful API server for managing products, built with Express and MongoDB (using Mongoose).
 
+---
+
 ## APIs and Functionality
 
 ### Endpoints
@@ -38,6 +40,8 @@ A product has the following fields:
 - `image` (String, optional)
 - `createdAt`, `updatedAt` (timestamps)
 
+---
+
 ## Tech Stack
 
 - **Node.js** (JavaScript runtime)
@@ -47,11 +51,15 @@ A product has the following fields:
 - **Vitest** (Testing framework)
 - **Supertest** (API testing)
 
+---
+
 ## Database
 
 - **Type:** MongoDB (Cloud, via MongoDB Atlas)
 - **Integration:** Uses Mongoose ODM for schema and data operations.
 - **Connection String:** Set in `server.js` (replace with your own credentials for production).
+
+---
 
 ## How to Run the Server
 
@@ -70,6 +78,8 @@ A product has the following fields:
      ```
 3. The server will run on [http://localhost:3000](http://localhost:3000)
 
+---
+
 ## How to Run the Tests
 
 - **Run all tests and generate coverage:**
@@ -79,16 +89,22 @@ A product has the following fields:
 - **View coverage report:**
   Open `coverage/index.html` in your browser for a detailed report.
 
+---
+
 ## Testing Frameworks/Tools Used
 
 - **[Vitest](https://vitest.dev/):** Main testing framework (unit, integration, API tests)
 - **[Supertest](https://github.com/ladjs/supertest):** For HTTP assertions in API/integration tests
+
+---
 
 ## Test Coverage
 
 Below is a screenshot of the test coverage achieved (open `coverage/index.html` for details):
 
 ![Test Coverage Screenshot](coverage/coverage-Screenshot.png)
+
+---
 
 ## How to Interact with the API
 
@@ -128,6 +144,8 @@ You can use tools like [Postman](https://www.postman.com/) or `curl` to interact
   ```bash
   curl -X DELETE http://localhost:3000/products/<product_id>
   ```
+
+---
 
 ## Notes
 

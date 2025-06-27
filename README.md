@@ -147,6 +147,16 @@ You can use tools like [Postman](https://www.postman.com/) or `curl` to interact
 
 ---
 
+## Keploy API Testing Dashboard Report
+
+Below is a screenshot of the test reports from the Keploy API Testing Dashboard:
+
+![Keploy Test Report](Test%20report.png)
+
+You can view the CI/CD configuration file here: [.github/workflows/keploy-api-test.yml](https://github.com/Diptesh-Bal/My_API_server/blob/main/.github/workflows/keploy-api-test.yml)
+
+---
+
 ## Notes
 
 - Make sure to update the MongoDB connection string in `server.js` with your own credentials for production use.

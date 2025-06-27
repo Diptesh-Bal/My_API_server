@@ -1,0 +1,48 @@
+name: Keploy API Testing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  keploy-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:4.4
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.runCommand(\"ping\").ok'" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./My_API_server
+
+      - name: Download Keploy
+        run: curl -s https://keploy.io/install.sh | bash
+
+      - name: Run Keploy tests
+        run: |
+          export KEPLOY_API_KEY=GHzzNtpPp4x7cXyCGg== && keploy test-suite --app=ce25a89e-6835-4946-9f03-cd154803bea5 --base-path http://localhost:3000/products --cloud
+        working-directory: ./My_API_server
+        env:
+          MONGO_URL: mongodb://localhost:27017/Node-API
+      - name: Install Keploy CLI
+        run: |
+          curl --silent -L https://keploy.io/ent/install.sh | bash

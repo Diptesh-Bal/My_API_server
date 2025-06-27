@@ -90,7 +90,7 @@ mongoose.set("strictQuery", false);
 if (require.main === module) {
   mongoose
     .connect(
-      "mongodb+srv://<my_username>:<my_password>@myapi.snhufzr.mongodb.net/Node-API?retryWrites=true&w=majority&appName=Myapi"
+      "mongodb+srv://<username>:<password>@myapi.snhufzr.mongodb.net/Node-API?retryWrites=true&w=majority&appName=Myapi"
     )
     .then(() => {
       console.log("connected to MongoDB");

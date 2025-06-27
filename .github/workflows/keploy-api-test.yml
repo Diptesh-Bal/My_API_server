@@ -34,16 +34,16 @@ jobs:
         run: npm install
 
       - name: Download Keploy
-        run: curl -s https://keploy.io/install.sh | bash
+        run: |
+          curl -s https://keploy.io/install.sh | bash
+          echo "$HOME/.keploy/bin" >> $GITHUB_PATH
 
       - name: Run Keploy tests
         run: |
-          export KEPLOY_API_KEY=GHzzNtpPp4x7cXyCGg== && keploy test-suite --app=ce25a89e-6835-4946-9f03-cd154803bea5 --base-path http://localhost:3000/products --cloud
+          export KEPLOY_API_KEY=GHzzNtpPp4x7cXyCGg==
+          keploy test-suite --app=ce25a89e-6835-4946-9f03-cd154803bea5 --base-path http://localhost:3000/products --cloud
         env:
           MONGO_URL: mongodb://localhost:27017/Node-API
-      - name: Install Keploy CLI
-        run: |
-          curl --silent -L https://keploy.io/ent/install.sh | bash
 
       - name: Print MongoDB logs if failed
         if: failure()

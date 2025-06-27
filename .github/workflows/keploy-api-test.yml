@@ -33,13 +33,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Download Keploy
+      - name: Install and Run Keploy Test Suite
         run: |
           curl -s https://keploy.io/install.sh | bash
-          echo "$HOME/.keploy/bin" >> $GITHUB_PATH
-
-      - name: Run Keploy tests
-        run: |
+          export PATH=$PATH:$HOME/.keploy/bin
           export KEPLOY_API_KEY=GHzzNtpPp4x7cXyCGg==
           keploy test-suite --app=ce25a89e-6835-4946-9f03-cd154803bea5 --base-path http://localhost:3000/products --cloud
         env:

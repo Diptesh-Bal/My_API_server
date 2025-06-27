@@ -32,7 +32,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./My_API_server
 
       - name: Download Keploy
         run: curl -s https://keploy.io/install.sh | bash
@@ -40,7 +39,6 @@ jobs:
       - name: Run Keploy tests
         run: |
           export KEPLOY_API_KEY=GHzzNtpPp4x7cXyCGg== && keploy test-suite --app=ce25a89e-6835-4946-9f03-cd154803bea5 --base-path http://localhost:3000/products --cloud
-        working-directory: ./My_API_server
         env:
           MONGO_URL: mongodb://localhost:27017/Node-API
       - name: Install Keploy CLI

@@ -151,7 +151,7 @@ You can use tools like [Postman](https://www.postman.com/) or `curl` to interact
 
 Below is a screenshot of the test reports from the Keploy API Testing Dashboard:
 
-![Keploy Test Report](Test%20report.png)
+![Keploy Test Report](TEST%20REPORT%20KEPLOY.png)
 
 You can view the CI/CD configuration file here: [.github/workflows/keploy-api-test.yml](https://github.com/Diptesh-Bal/My_API_server/blob/main/.github/workflows/keploy-api-test.yml)
 
